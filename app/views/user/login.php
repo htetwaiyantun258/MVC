@@ -6,7 +6,11 @@
     <div class="container my-5">
         <div class="col-md-8 offset-md-2">
             <div class="card bg-light p-5">
-            <?php flash("register"); ?>
+            <?php if ($_SERVER['REQUEST_METHOD'] == "POST"){
+                flash("register");
+                flash("login fail");
+            } ?>
+
                 <h1 class="text-info text-center mb-3">Login Post</h1>
                 <form action="<?php echo URLROOT . '/user/login' ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">

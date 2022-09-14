@@ -7,7 +7,7 @@ class UserModel {
 
     }
     public function getAllUser(){
-        $this->db->query("SELECT *  FROM users");
+        $this->db->query("SELECT *  FROM user");
         return $this->db->multipleSet();
 
     }
@@ -26,7 +26,13 @@ class UserModel {
         if(empty($row)){
             return false;
         }else{
-            return true;
+            return $row;
         }
+    }
+
+    public function login($name,$email){
+        $this->db->query("SELECT * FROM users WHERE email =:email");
+        $this->db->bind(":email",$email);
+        $row = $this->db->singleSet();
     }
 }

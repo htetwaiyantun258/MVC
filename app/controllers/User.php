@@ -4,7 +4,8 @@ class User extends Controller
 {
     public function __construct()
     {
-      $this->UserModel = $this->Model("UserModel");
+      $this->UserModel = $this->model("UserModel");
+      
 
     }
     public function register()
@@ -57,14 +58,12 @@ class User extends Controller
           $this->view("user/register");
       } 
     }
+
+    
     public function login()
     {
       if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $_POST = $_POST;
-
-        var_dump($_POST);
-
-      
         $data = [
            
             "email" => $_POST["email"],
@@ -82,7 +81,21 @@ class User extends Controller
         }
         
         if ( empty($data['email_err']) && empty($data['password_err']) ) {
-            echo "Good to go";
+          $userRow = $this->UserModel->getUserEmail($data['email']);
+          if($userRow){
+            $hashpass = $userRow->password;
+            setSession($userRow);
+            if(password_verify($data['password'], $hashpass)){
+              flash('login success','Welcome! You have successfully');
+              redirect(URLROOT .'/admin/home');
+
+            }else{
+              flash('login fail','fail login user');
+              $this->view('user/login'); 
+            }
+          }else{
+            $data['email_err'] = "Email Error";
+          }
         }else {
           $this->view("user/login", $data);
       }

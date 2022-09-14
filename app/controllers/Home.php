@@ -3,9 +3,8 @@ error_reporting(E_PARSE | E_ERROR | E_WARNING);
 
 class Home extends Controller{
     public function __construct(){
-        $this->UserModel = $this->model("UserModel");
-       
 
+        $this->UserModel = $this->model("UserModel");
     
     }
     public function index($data = []){

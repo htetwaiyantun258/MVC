@@ -2,6 +2,10 @@
 
 session_start();
 
+function redirect($page){
+    header("Location:" .$page);
+}
+
 function flash($name = '', $message = ''){
     if(!empty($name)){
         if(!empty($message)){
@@ -10,8 +14,29 @@ function flash($name = '', $message = ''){
             }
             $_SESSION[$name] = $message;
         }else{
-            echo "<div class='alert alert-success'>".$_SESSION[$name]."</div>";
-            unset($_SESSION[$name]); 
+            if($_SESSION[$name]){
+                echo "<div class='alert alert-success'>".$_SESSION[$name]."</div>";
+                unset($_SESSION[$name]); 
+            }  
         }
     }
 } 
+
+function setSession($user){
+    $_SESSION['current_user'] = $user;
+
+}
+
+function getSession(){
+    if(isset($_SESSION['current_user'])){
+        return $_SESSION['current_user'];
+    }else{
+        return false;
+    }
+}
+
+function unsetSession(){
+    unset($_SESSION['current_user']);
+}
+
+
