@@ -3,15 +3,10 @@
 <?php require_once APPROOT . "/views/inc/nav.php"; ?>
 
 
-<ul>
-    <?php foreach($data as $user):?>
-        <li><?php echo $user->name ?></li>
-        <?php endforeach; ?>
-</ul>
-       <?php  flash('login success'); ?>
+
       
 
-<?php echo APPROOT ?>
+<h1>Hello Welcome</h1>
 
 
 <?php require_once APPROOT . "/views/inc/footer.php"; ?>

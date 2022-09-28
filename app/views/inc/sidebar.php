@@ -8,6 +8,12 @@
                             <li class="list-group-item rounded-0">
                                 <a href="<?php echo URLROOT .'/Category/create'?>" >Category</a>
                             </li>
+                            <li class="list-group-item rounded-0">
+                                <a href="<?php echo URLROOT .'/Post/create/1'?>" >Post</a>
+                            </li>
+                            <li class="list-group-item rounded-0">
+                                <a href="<?php echo URLROOT .'/Category/create'?>" >Lesson</a>
+                            </li>
                             
                         </ul>
                     </div>

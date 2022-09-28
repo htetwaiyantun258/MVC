@@ -8,7 +8,7 @@ class Home extends Controller{
     
     }
     public function index($data = []){
-        $data =$this->UserModel->getAllUser();
+        // $data =$this->UserModel->getAllUser();
         $this->view("home/index",$data);
     }
    

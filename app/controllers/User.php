@@ -103,4 +103,9 @@ class User extends Controller
       $this->view("user/login");
   } 
     }
+
+    public function logout(){
+      unsetSession();
+      $this->view("home/index");
+    }
 }

@@ -7,14 +7,14 @@
         <div class="col-md-3">
             <div class="card rounded-0">
                 <div class="card-header">
-                    <h2>Category</h2>
+                    <h2>Side Menu</h2>
                 </div>
                 <div class="card-block">
                     <ul class="list-group ">
                         <?php foreach($data['cats'] as $getdata): ?>
                                 <li class="list-group-item rounded-0 d-flex justify-content-between">
                                 <span>
-                                <a href="<?php echo URLROOT .'/Category/create'?>" ><?php echo $getdata->name; ?></a>
+                               <?php echo $getdata->name; ?>
                                 </span>
                                 <span>
                                     <a href="<?php echo URLROOT . '/Category/edit/'. $getdata->id ?>"><i class="fa fa-edit text-warning"></i></a>
@@ -27,17 +27,18 @@
             </div>     
         </div>
         <div class="col-md-5 offset-md-2" >
-            <h2 class="mb-3 text-center text-info">Crate Category</h2>
-        <form action="<?php echo URLROOT .'/Category/create' ?>" method="POST" enctype="multipart/form-data">
+            <h2 class="mb-3 text-center text-info">Edit Category</h2>
+        <form action="<?php echo URLROOT .'/Category/edit' ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                         <label for="name" class="form-label">Category Name</label>
-                        <input type="text" class="form-control <?php echo !empty($data['name_err']) ? 'is-invalid' : '';?>" id="name" name="name"  >
+                        <input type="text" class="form-control <?php echo !empty($data['name_err']) ? 'is-invalid' : '';?>" id="name" name="name"
+                        value="<?php echo $data['currentCat']->name; ?>"  >
                         <span class="text-danger"><?php echo !empty($data['name_err']) ? $data['name_err'] : '';?></span>
                     </div>         
                     <div class="row justify-content-end no-gutters">
                         <div>
                             <button class="btn btn-outline-secondary ">Cancle</button>
-                            <button class="btn btn-outline-primary">Create</button>
+                            <button class="btn btn-outline-primary">Update</button>
                         </div>
                     </div>
                 </form>

@@ -22,6 +22,25 @@ function flash($name = '', $message = ''){
     }
 } 
 
+function setCurrentId($value){
+if (isset($_SESSION['currentId'])) {
+    unset($_SESSION['currentId']);
+}
+    $_SESSION['currentId'] = $value;
+}
+
+function getCurrentId(){
+    if(isset($_SESSION['currentId']))
+    {
+        return $_SESSION['currentId'];
+    }
+}
+function deleteCurrentId(){
+    if(isset($_SESSION['currentId'])){
+        unset($_SESSION['currentId']);
+    }
+}
+
 function setSession($user){
     $_SESSION['current_user'] = $user;
 
